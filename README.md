@@ -58,5 +58,8 @@ Testing
 
 
 ## 🎯 Result
-✔ Complete automation framework ✔ Covers all required scenarios ✔ Ready for real-world QA testing
+- ✔ Complete automation framework  
+- ✔ Covers all key scenarios  
+- ✔ Ready for real-world QA testing  
+
 
