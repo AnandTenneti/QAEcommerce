@@ -45,3 +45,13 @@ Validate shipping & billing information input.
 Verify order summary before payment.
 
 Validate order confirmation after purchase.
+
+
+
+
+
+Testing
+
+## 🎯 Result
+✔ Complete automation framework ✔ Covers all required scenarios ✔ Ready for real-world QA testing
+
