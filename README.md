@@ -52,6 +52,11 @@ Validate order confirmation after purchase.
 
 Testing
 
+## 👨‍💻 Author
+**Anand Kiran Tenneti**  
+🚀 Playwright | Automation Testing
+
+
 ## 🎯 Result
 ✔ Complete automation framework ✔ Covers all required scenarios ✔ Ready for real-world QA testing
 
