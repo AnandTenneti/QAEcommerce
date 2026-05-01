@@ -1,3 +1,12 @@
+## Tech Stack
+
+ * Playwright
+ * Javascript
+ * Node.js
+ * Page Object Model
+
+
+
 Functional Flows to Test E-Commerce
 
  
