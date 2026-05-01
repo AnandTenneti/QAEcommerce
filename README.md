@@ -1,3 +1,17 @@
+## QA Ecommerce Application
+A QAEcommerce application is a testable online shopping system designed to simulate real-world e-commerce workflows such as:
+
+User registration & login
+Product search & filtering
+Add to cart & checkout
+Payment flow (mock or real)
+Order history
+
+👉 The goal is not business usage, but testing practice.
+
+## Project Overview
+
+
 ## Tech Stack
 
  * Playwright
