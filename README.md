@@ -66,6 +66,26 @@ Validate order confirmation after purchase.
 
 Testing
 
+## 🚀 Running Tests
+
+```
+▶️ Run all tests
+    npx playwright test
+
+📄 Run a specific test file
+    npx playwright test tests/Logintest.spec.js
+
+👀 Run tests in headed mode (visible browser)
+    npx playwright test --headed
+
+🏷️ Run tests by tag (e.g., smoke)
+    npx playwright test --grep @smoke --project=chromium --headed
+
+ 📊 View HTML test report
+    npx playwright show-report
+```
+
+
 ## 👨‍💻 Author
 **Anand Kiran Tenneti**  
 🚀 Playwright | Automation Testing
