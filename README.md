@@ -68,13 +68,17 @@ Testing
 
 ## 🚀 Running Tests
 
+### ▶️  Run all tests
+
 ```
-▶️  Run all tests
+
     npx playwright test
+```
 
-📄 Run a specific test file
+### 📄 Run a specific test file
+```
     npx playwright test tests/Logintest.spec.js
-
+```
 👀 Run tests in headed mode (visible browser)
     npx playwright test --headed
 
