@@ -69,19 +69,19 @@ Testing
 ## 🚀 Running Tests
 
 ```
-▶️ Run all tests
+▶️ # Run all tests
     npx playwright test
 
-📄 Run a specific test file
+📄 # Run a specific test file
     npx playwright test tests/Logintest.spec.js
 
-👀 Run tests in headed mode (visible browser)
+👀 # Run tests in headed mode (visible browser)
     npx playwright test --headed
 
-🏷️ Run tests by tag (e.g., smoke)
+🏷️ # Run tests by tag (e.g., smoke)
     npx playwright test --grep @smoke --project=chromium --headed
 
- 📊 View HTML test report
+ 📊 # View HTML test report
     npx playwright show-report
 ```
 
