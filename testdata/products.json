@@ -22,14 +22,6 @@
       "description": "A sample description for the product.",
       "price": "$72.00"
     }
-  ],
-  "invalidUserName": [
-    { "username": "invalid@qabrains.com", "password": "Password123" }
-  ],
-  "invalidPassword": [
-    { "username": "test@qabrains.com", "password": "Password12" }
-  ],
-  "invalidUserNameAndPassword": [
-    { "username": "invalid@qabrains.com", "password": "Password12" }
   ]
 }
+
