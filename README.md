@@ -10,7 +10,54 @@ Order history
 👉 The goal is not business usage, but testing practice.
 
 ## Project Overview
+```
 
+├── constants
+│   └── OrderByOptions.js
+├── fixtures
+│   └── fixtures.js
+├── jsconfig.json
+├── package-lock.json
+├── package.json
+├── pages
+│   ├── CartPage.js
+│   ├── CheckoutPage.js
+│   ├── FavoritesPage.js
+│   ├── HeaderPage.js
+│   ├── HomePage.js
+│   ├── LoginPage.js
+│   └── ProductDetailsPage.js
+├── playwright-report
+│   └── index.html
+├── playwright.config.js
+├── README.md
+├── test-results
+├── testdata
+│   ├── products.json
+│   ├── testData_1.json
+│   ├── testData.json
+│   └── users.json
+├── tests
+│   ├── datadriven
+│   ├── e2e
+│   ├── FavoritestTest.spec.js
+│   ├── HomePageTest.spec.js
+│   ├── LoginTest.spec.js
+│   ├── ProductDetailsTest.spec.js
+└── utils
+    ├── Common.js
+
+```
+
+
+
+✨ Key Features
+✅ Page Object Model (POM)
+✅ Custom Playwright Fixtures
+✅ Data-driven testing using JSON
+✅ Tag-based test execution (@smoke, @end2end)
+✅ Cross-browser testing support
+✅ Structured and maintainable codebase
 
 ## Tech Stack
 
@@ -61,10 +108,18 @@ Verify order summary before payment.
 Validate order confirmation after purchase.
 
 
-
-
-
-Testing
+🧪 Test Coverage
+🔐 Authentication
+Valid login
+Invalid username/password combinations
+Error message validations
+🛍️ Product Flow
+Product selection
+Product details validation
+🛒 Checkout Flow
+Add to cart
+Checkout process
+Order confirmation validation
 
 ## 🚀 Running Tests
 
