@@ -1,4 +1,6 @@
 ## QA Ecommerce Application
+![CI](https://img.shields.io/github/actions/workflow/status/AnandTenneti/QAEcommerce/playwright.yml?branch=main&label=Cross-Browser%20Tests&logo=github)
+
 A QAEcommerce application is a testable online shopping system designed to simulate real-world e-commerce workflows such as:
 
 User registration & login
