@@ -1,7 +1,6 @@
 export class ProductDetailsPage {
   constructor(page) {
     this.page = page;
-    //this.productName = page.getByRole("heading");
     this.productName = page.locator("//h1[text()]");
     this.productDescription = page.locator("//h1/following-sibling::p");
     this.productPrice = page.locator("//div[starts-with(@class,'text-xl')]");

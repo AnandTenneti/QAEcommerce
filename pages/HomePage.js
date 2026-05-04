@@ -1,13 +1,9 @@
-import { OrderByOptions } from "../constants/OrderByOptions";
-
 export class HomePage {
   constructor(page) {
     this.page = page;
+    this.productCard = page.locator("div.products.grid > div");
     this.orderByDropdown = page.getByRole("combobox", { type: "button" });
     this.orderByDropdownOption = page.getByRole("option");
-    this.noOfProducts = page.locator("div.products.grid a:nth-of-type(1)");
-    //this.noOfProducts = page.locator('div.products.grid > div');
-
     this.productPrices = page.locator("div.products.grid div>span.text-lg");
     this.favoriteButtons = page.locator(
       "//span/button[contains(@class,'cursor-pointer')]",
@@ -16,10 +12,12 @@ export class HomePage {
     this.removeFromButton = page.getByRole("button", {
       name: "Remove from cart",
     });
+    this.addToCartBtn = page.getByRole("button", { name: "Add to cart" });
   }
+  //this.noOfProducts = page.locator("div.products.grid a:nth-of-type(1)");
 
   getProducts() {
-    return this.noOfProducts;
+    return this.productCard;
   }
 
   async selectOrderByOption(option) {
@@ -34,17 +32,14 @@ export class HomePage {
     return prices;
   }
   async markProductAsFavorite(productName) {
-    await this.page
-      .locator("div.products.grid > div")
+    await this.productCard
       .filter({ hasText: productName })
       .locator("span > button.cursor-pointer")
       .click();
   }
 
- 
-
   getProductCard(index) {
-    return this.page.locator("div.products.grid > div").nth(index);
+    return this.productCard.nth(index);
   }
 
   async getProductNameByIndex(index) {
@@ -55,49 +50,50 @@ export class HomePage {
   }
 
   async clickOnProduct(productName) {
-    await this.page
-      .locator("div.products.grid > div")
-      .filter({ hasText: productName })
-      .click();
+    await this.productCard.filter({ hasText: productName }).click();
   }
   async addProductToCart(productName) {
-    await this.page
-      .locator("div.products.grid > div")
+    await this.productCard
       .filter({ hasText: productName })
       .getByRole("button", { name: "Add to cart" })
       .click();
   }
   async addProductToCart(productName, price) {
-    await this.page
-      .locator("div.products.grid > div")
+    const product = this.productCard
       .filter({ hasText: productName })
-      .filter({ hasText: price })
-      .getByRole("button", { name: "Add to cart" })
-      .click();
+      .filter({ hasText: price });
+
+    product.getByRole("button", { name: "Add to cart" }).click();
   }
 
   async clickOnProductByIndex(index) {
-    const count = await this.noOfProducts.count();
+    const count = await this.productCard.count();
     if (index >= count) {
       throw new Error(
         `Index ${index} is out of range. Total products: ${count}`,
       );
     }
-    await this.noOfProducts.nth(index).click();
+    await this.productCard.nth(index).click();
   }
 
   async isToastMessageVisible() {
     return await this.toastMessage.isVisible();
   }
 
-  async verifyButtonText(productName) {
-    return await this.page
-      .locator("div.products.grid > div")
-      .filter({ hasText: productName });
-    return await product
-      .getByRole("button", { name: "Remove from cart" })
-      .isVisible();
+  getStyledFavoriteButton(productName) {
+    return this.productCard
+      .filter({ hasText: productName })
+      .locator("button[style]");
   }
+
+  // async verifyButtonText(productName) {
+  //   return await this.page
+  //     .locator("div.products.grid > div")
+  //     .filter({ hasText: productName });
+  //   return await product
+  //     .getByRole("button", { name: "Remove from cart" })
+  //     .isVisible();
+  // }
 
   async clickOnCartButton() {
     await page
@@ -105,5 +101,11 @@ export class HomePage {
       .getByRole("button")
       .filter({ hasText: /^$/ })
       .click();
+  }
+
+  getRemoveButton(productName) {
+    return this.productCard
+      .filter({ hasText: productName })
+      .locator("button:has-text('Remove from cart')");
   }
 }
