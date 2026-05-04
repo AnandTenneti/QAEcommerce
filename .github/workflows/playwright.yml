@@ -35,6 +35,7 @@ jobs:
             --grep "@regression" \
             --project=${{ matrix.browser }} \
             --reporter=blob \
+            --output=blob-report/${{ matrix.browser }} \
             --trace=on-first-retry
 
       - name: Upload Blob Report
@@ -42,7 +43,7 @@ jobs:
         if: always()
         with:
           name: blob-report-${{ matrix.browser }}
-          path: blob-report/
+          path: blob-report/${{ matrix.browser }}
           retention-days: 7
 
   merge-reports:
@@ -67,12 +68,13 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: all-blob-reports
+          merge-multiple: true
 
       - name: Merge reports into HTML
         run: |
           npx playwright merge-reports \
             --reporter html \
-            ./all-blob-reports
+            all-blob-reports
 
       - name: Upload merged HTML report
         uses: actions/upload-artifact@v4
