@@ -3,7 +3,8 @@
 ![Playwright](https://img.shields.io/badge/Tested%20With-Playwright-45ba4b?logo=playwright)
 ![Browsers](https://img.shields.io/badge/Browsers-Chromium%20%7C%20Firefox%20%7C%20WebKit-blue)
 ![Tests](https://img.shields.io/badge/Tests-SMOKE%20%7C%20REGRESSION-orange)
-![License](https://img.shields.io/github/license/AnandTenneti/QAEcommerce)
+![Lint](https://img.shields.io/badge/code%20style-eslint-purple)
+
 
 
 
