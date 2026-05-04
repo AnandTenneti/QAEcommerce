@@ -86,9 +86,17 @@ Order history
 
 
 Functional Flows to Test E-Commerce
+### 🔐 Login Tests
 
- 
+**Positive Scenarios**
+- Verify successful login with valid credentials  
 
+**Negative Scenarios**
+- Verify login fails with invalid username and valid password  
+- Verify login fails with valid username and invalid password  
+- Verify login fails with invalid username and invalid password  
+
+<!-->
 Add to Cart & Remove Items
 
 Verify items can be added to cart.
@@ -137,7 +145,7 @@ Product details validation
 Add to cart
 Checkout process
 Order confirmation validation
-
+-->
 ## 🚀 Running Tests
 
 ### ▶️  Run all tests
