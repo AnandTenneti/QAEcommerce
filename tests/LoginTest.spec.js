@@ -8,7 +8,10 @@ const errorMessages = {
 };
 
 test.describe("Login Tests", () => {
-  test("Login with valid credentials", async ({ loggedInPage, headerPage }) => {
+  test("[@regression] Login with valid credentials", async ({
+    loggedInPage,
+    headerPage,
+  }) => {
     await expect(loggedInPage).toHaveURL(/\/ecommerce$/);
 
     await headerPage.logout();
@@ -16,7 +19,7 @@ test.describe("Login Tests", () => {
     await expect(loggedInPage).toHaveURL(/\/ecommerce\/login$/);
   });
 
-  test.describe("Invalid Login Scenarios", () => {
+  test.describe("[@regression] Invalid Login Scenarios", () => {
     const scenarios = [
       {
         name: "Invalid Password",
@@ -36,7 +39,7 @@ test.describe("Login Tests", () => {
     ];
     for (const scenario of scenarios) {
       test(scenario.name, async ({ loginPage }) => {
-        await loginPage.goToApplicationLoginPage("/ecommerce/login");
+        await loginPage.goToApplicationLoginPage(/\/ecommerce\/login$/);
         await loginPage.login(scenario.data.username, scenario.data.password);
         const errors = await loginPage.getErrorMessages();
         expect(errors).toContain(scenario.expectedError);
