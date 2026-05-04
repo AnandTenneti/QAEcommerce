@@ -65,10 +65,15 @@ Order history
 ✨ Key Features
 
 ✅ Page Object Model (POM)
+
 ✅ Custom Playwright Fixtures
+
 ✅ Data-driven testing using JSON
-✅ Tag-based test execution (@smoke, @end2end)
+
+✅ Tag-based test execution (@smoke, @e2e)
+
 ✅ Cross-browser testing support
+
 ✅ Structured and maintainable codebase
 
 ## Tech Stack
