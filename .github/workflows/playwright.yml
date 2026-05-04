@@ -29,7 +29,7 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: RRun Playwright Tests on ${{ matrix.browser }}
+      - name: Run Playwright Tests on ${{ matrix.browser }}
         run: npx playwright test \
              --grep "@regression" \
              --project=${{ matrix.browser }} \
@@ -52,9 +52,9 @@ jobs:
           retention-days: 30
 
           merge-reports:
-    name: Merge Playwright Reports
-    needs: test
-    runs-on: ubuntu-latest
+          name: Merge Playwright Reports
+          needs: test
+          runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repo
