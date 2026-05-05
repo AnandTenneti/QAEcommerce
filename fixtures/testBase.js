@@ -1,4 +1,4 @@
-import { test as base, expect } from '@fixtures/fixtures';
+import { test as base, expect } from '@fixtures/baseTest';
 
 export const test = base;
 
@@ -13,6 +13,11 @@ test.afterEach(async ({ page }, testInfo) => {
       contentType: 'image/png',
     });
   }
+ try {
+    await headerPage.logout();
+  } catch (e) {
+    console.warn('Logout skipped:', e.message);
+  }
 });
 
-export const expect = test.expect;
+export { expect };
