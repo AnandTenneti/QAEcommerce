@@ -1,4 +1,4 @@
-import { test, expect } from "@fixtures/fixtures";
+import { test, expect } from "@hooks/testHooks";
 import testData from "@testdata/products.json";
 
 test("Verify product details", async ({
