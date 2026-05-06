@@ -6,6 +6,7 @@
       "@pages/*": ["pages/*"],
       "@fixtures/*": ["fixtures/*"],
       "@testdata/*": ["testdata/*"],
+      "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
       "@constants/*": ["constants/*"],
       "@tests/*": ["tests/*"]
