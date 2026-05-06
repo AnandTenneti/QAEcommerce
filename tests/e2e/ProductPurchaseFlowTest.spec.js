@@ -1,5 +1,5 @@
-import { test, expect } from "@fixtures/fixtures";
 import testData from "@testdata/products.json";
+import { test, expect } from "@hooks/testHooks";
 
 test("[[@e2e] User can complete product purchase flow", async ({
   loggedInPage,
