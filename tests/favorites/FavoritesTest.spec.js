@@ -1,7 +1,4 @@
-import { test, expect } from "@fixtures/fixtures";
-test.afterEach(async ({ headerPage }) => {
-  await headerPage.logout();
-});
+import { test, expect } from "@hooks/testHooks";
 
 test("[@regression] Verify empty favorites state and product addition behavior", async ({
   loggedInPage,
