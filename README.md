@@ -107,6 +107,13 @@ Functional Flows to Test E-Commerce
 - Verify login fails with valid username and invalid password
 - Verify login fails with invalid username and invalid password
 
+### Home Tests
+
+ - Verify display of products
+ - Verify sorting of products
+ - Verify Add to favorites
+ - Verify Add to cart 
+
 <!-->
 
 Add to Cart & Remove Items
