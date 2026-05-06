@@ -1,15 +1,11 @@
-import { test, expect } from "@fixtures/fixtures";
+import { test, expect } from "@hooks/testHooks";
 
 test.describe("Cart Functionality Tests", () => {
-  test.afterEach(async ({ headerPage }) => {
-    await headerPage.logout();
-  });
-
   test("[@regression] Verify adding product to cart", async ({
     loggedInPage,
     homePage,
-    headerPage,
     cartPage,
+    headerPage,
   }) => {
     const productName = "Sample Trouser Name";
     const productPrice = "$72.00";
