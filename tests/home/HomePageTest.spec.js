@@ -1,13 +1,9 @@
 import { OrderByOptions } from "@constants/OrderByOptions";
-import { test, expect } from "@fixtures/fixtures";
+import { test, expect } from "@hooks/testHooks";
 
 test.describe("Home Page Tests", () => {
-  test.afterEach(async ({ headerPage }) => {
-    await headerPage.logout();
-  });
   test("Verify 9 products are displayed on the home page", async ({
     loggedInPage,
-    headerPage,
     homePage,
   }) => {
     await expect(loggedInPage).toHaveURL("/ecommerce");
@@ -48,35 +44,41 @@ test.describe("Favorite Product Tests", () => {
     const productPrice = "$72.00";
     await homePage.addProductToCart(productName, productPrice);
     await loggedInPage.waitForTimeout(3000);
-    const buttonTextVisible = await homePage.verifyButtonText();
-    expect(buttonTextVisible).toBeTruthy();
+    const removeButtonText = await homePage.getRemoveButton(productName);
+    await expect(removeButtonText).toBeVisible();
     await headerPage.clickOnCartButton();
-    await cartPage.clickOnRemove();
+    await cartPage.removeFromCart(productName,productPrice);
   });
 
-  test("[@favorites] Verify clicking on favorites", async ({loggedInPage,homePage, headerPage})=>{
-      await homePage.markProductAsFavorite("Sample Trouser Name");
-      await headerPage.clickOnFavorite();
-      await expect(loggedInPage).toHaveURL(/favorite/);
-      await loggedInPage.waitForTimeout(3000);
-    });
+  test("[@favorites] Verify clicking on favorites", async ({
+    loggedInPage,
+    homePage,
+    headerPage,
+  }) => {
+    await homePage.markProductAsFavorite("Sample Trouser Name");
+    await headerPage.clickOnFavorite();
+    await expect(loggedInPage).toHaveURL(/favorite/);
+    await loggedInPage.waitForTimeout(3000);
+  });
 
   test("[@smoke] Verify product details page is displayed when a product is clicked", async ({
     loggedInPage,
     headerPage,
     homePage,
-    productDetailsPage
+    productDetailsPage,
   }) => {
     let expectedProductName;
     await test.step("Click on a product from the list", async () => {
-      expectedProductName = await homePage.getProductNameByIndex(1)
+      expectedProductName = await homePage.getProductNameByIndex(1);
       await homePage.clickOnProductByIndex(1);
     });
     await test.step("Verify user is navigated to product details page", async () => {
       await expect(loggedInPage).toHaveURL(/product-details/);
     });
-    await test.step("Verify correct product title is displayed ", async()=>{
-      await expect(productDetailsPage.getProductName()).toHaveText(expectedProductName)
-    })
+    await test.step("Verify correct product title is displayed ", async () => {
+      await expect(productDetailsPage.getProductName()).toHaveText(
+        expectedProductName,
+      );
+    });
   });
 });
