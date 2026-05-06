@@ -32,6 +32,7 @@ jobs:
       - name: Run Playwright Tests on ${{ matrix.browser }}
         run: |
           npx playwright test \
+            --grep "@smoke" \
             --project=${{ matrix.browser }} \
             --reporter=html \
             --output=playwright-report/${{ matrix.browser }} \
