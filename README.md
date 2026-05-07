@@ -26,7 +26,13 @@ Order history
 │   ├── errorMessages.js
 │   └── OrderByOptions.js
 ├── fixtures
-│   └── fixtures.js
+│   ├── auth.fixtures.js
+│   ├── baseTest.js
+│   ├── hooks.js
+│   ├── page.fixture.js
+│   └── testBase.js
+├── hooks
+│   └── testHooks.js
 ├── jsconfig.json
 ├── package-lock.json
 ├── package.json
@@ -39,16 +45,16 @@ Order history
 │   ├── LoginPage.js
 │   └── ProductDetailsPage.js
 ├── playwright-report
-│   └── index.html
 ├── playwright.config.js
 ├── README.md
-├── test-results
+├── screenshots
 ├── testdata
 │   ├── products.json
 │   ├── testData_1.json
 │   ├── testData.json
 │   └── users.json
 ├── tests
+│   ├── auth.setup.js
 │   ├── cart
 │   │   └── CartTest.spec.js
 │   ├── datadriven
@@ -60,7 +66,6 @@ Order history
 │   │   └── ProductPurchaseFlowTest.spec.js
 │   ├── favorites
 │   │   └── FavoritesTest.spec.js
-│   ├── FavoritesTest1.spec.js
 │   ├── home
 │   │   └── HomePageTest.spec.js
 │   ├── login
@@ -70,6 +75,7 @@ Order history
 └── utils
     ├── Common.js
     └── Utilities.js
+
 ```
 
 ✨ Key Features
