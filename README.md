@@ -120,6 +120,14 @@ Functional Flows to Test E-Commerce
  - Verify Add to favorites
  - Verify Add to cart 
 
+
+## Test Coverage
+
+### Product Details
+
+### Cart Page
+
+### End to End Happy Path
 <!-->
 
 Add to Cart & Remove Items
