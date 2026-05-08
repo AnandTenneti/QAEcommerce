@@ -45,8 +45,4 @@ jobs:
           name: playwright-report-${{ matrix.browser }}
           path: playwright-report/${{ matrix.browser }}
           retention-days: 7
-      - name: Deploy report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: playwright-report
+      
