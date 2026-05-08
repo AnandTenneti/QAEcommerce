@@ -101,6 +101,11 @@ Order history
 
 Functional Flows to Test E-Commerce
 
+ 
+
+
+## Test Coverage
+
 ### 🔐 Login Tests
 
 **Positive Scenarios**
@@ -118,10 +123,7 @@ Functional Flows to Test E-Commerce
  - Verify display of products
  - Verify sorting of products
  - Verify Add to favorites
- - Verify Add to cart 
-
-
-## Test Coverage
+ - Verify Add to cart
 
 ### Product Details
 
