@@ -99,10 +99,6 @@ Order history
 - Node.js
 - Page Object Model
 
-Functional Flows to Test E-Commerce
-
- 
-
 
 ## Test Coverage
 
