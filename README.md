@@ -128,7 +128,14 @@ Functional Flows to Test E-Commerce
 ### Cart Page
 
 ### End to End Happy Path
-<!-->
+* Navigate from home to product
+* Add product to cart
+* Proceed to checkout
+* Fill valid shipping and payment details
+* Submit order
+* Validate Order Confirmation page
+* Verify dynamic Order ID (format: 'ORD-xxxx')
+<!--
 
 Add to Cart & Remove Items
 
