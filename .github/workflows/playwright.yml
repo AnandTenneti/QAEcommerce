@@ -84,9 +84,10 @@ jobs:
           mkdir merged-results
           find allure-results -type f -name "*.json" -exec cp {} merged-results/ \;
 
-      # Generate Allure Report
       - name: Generate Allure Report
-        run: npx allure generate merged-results --clean -o allure-report
+        run: |
+          rm -rf allure-report
+          npx allure generate merged-results -o allure-report
 
       # Upload final merged report
       - name: Upload Allure Report
