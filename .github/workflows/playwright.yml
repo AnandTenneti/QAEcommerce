@@ -3,6 +3,11 @@ name: Playwright Tests
 on:
   workflow_dispatch:
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
     timeout-minutes: 60
@@ -36,7 +41,6 @@ jobs:
             --project=${{ matrix.browser }} \
             --trace=on-first-retry
 
-      # Upload raw allure results from each browser
       - name: Upload Allure Results
         uses: actions/upload-artifact@v4
         if: always()
@@ -45,7 +49,6 @@ jobs:
           path: allure-results
           retention-days: 7
 
-      # Keep Playwright HTML report too
       - name: Upload Playwright HTML Report
         uses: actions/upload-artifact@v4
         if: always()
@@ -54,11 +57,14 @@ jobs:
           path: playwright-report
           retention-days: 7
 
-
   allure-report:
     needs: test
     runs-on: ubuntu-latest
     if: always()
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout code
@@ -72,34 +78,33 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      # Download all browser results
       - name: Download Allure Results
         uses: actions/download-artifact@v4
         with:
-          path: allure-results
+          path: allure-results1
 
-      # Merge results
       - name: Merge Results
         run: |
           mkdir merged-results
-          find allure-results -type f -name "*.json" -exec cp {} merged-results/ \;
+          find allure-results1 -type f -name "*.json" -exec cp {} merged-results/ \;
 
       - name: Generate Allure Report
         run: |
-          rm -rf allure-report
-          npx allure generate merged-results -o allure-report
+          rm -rf allure-report1
+          npx allure generate merged-results -o allure-report1
 
-      # Upload final merged report
-      - name: Upload Allure Report
+      - name: Upload Allure Report Artifact
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: allure-report
+          path: allure-report1
           retention-days: 7
-      - name: Upload Pages artifact
+
+      - name: Upload Pages Artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: playwright-report
+          path: allure-report1
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
