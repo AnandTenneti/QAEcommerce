@@ -1,3 +1,0 @@
-Adding product: Sample Shoe Name with price: $89.00
-Adding product: Sample Shirt Name with price: $49.99
-Products in cart after removal: 1

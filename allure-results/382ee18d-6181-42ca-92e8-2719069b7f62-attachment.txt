@@ -1,2 +1,0 @@
-Adding product: Sample Trouser Name with price: $72.00
-Adding product: Sample Shirt Name with price: $49.99
