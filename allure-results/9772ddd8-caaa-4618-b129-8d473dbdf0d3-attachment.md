@@ -1,0 +1,231 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: CartTest.spec.js >> Cart Functionality Tests >> [@regression_m] Verify adding multiple products to cart and total price calculation
+- Location: tests/CartTest.spec.js:68:7
+
+# Error details
+
+```
+Error: expect(locator).toHaveCount(expected) failed
+
+Locator:  locator('div.cart-list')
+Expected: 2
+Received: 1
+Timeout:  5000ms
+
+Call log:
+  - Expect "toHaveCount" with timeout 5000ms
+  - waiting for locator('div.cart-list')
+    4 × locator resolved to 0 elements
+      - unexpected value "0"
+    5 × locator resolved to 1 element
+      - unexpected value "1"
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /ecommerce
+        - img [ref=e7]
+        - generic [ref=e8]: (Practice Site)
+    - generic [ref=e10]:
+      - heading [level=3] [ref=e11]: Your Cart
+      - generic [ref=e12]:
+        - heading [level=1] [ref=e13]: Your cart is empty.
+        - button [ref=e14] [cursor=pointer]:
+          - img [ref=e15]
+          - generic [ref=e17]: Continue Shopping
+    - contentinfo [ref=e18]:
+      - generic [ref=e20]:
+        - generic [ref=e21]:
+          - link [ref=e22] [cursor=pointer]:
+            - /url: https://qabrains.com
+            - img [ref=e23]
+          - paragraph [ref=e24]: QA Brains is the ultimate QA Community to exchange knowledge, seek advice, and engage in discussions that enhance Quality Assurance testers' skills and expertise.
+        - generic [ref=e25]:
+          - heading [level=3] [ref=e26]: QA Topics
+          - list [ref=e27]:
+            - listitem [ref=e28]:
+              - link [ref=e29] [cursor=pointer]:
+                - /url: https://qabrains.com/topics/web-testing
+                - text: Web Testing
+            - listitem [ref=e30]:
+              - link [ref=e31] [cursor=pointer]:
+                - /url: https://qabrains.com/topics/interview-questions
+                - text: Interview Questions
+            - listitem [ref=e32]:
+              - link [ref=e33] [cursor=pointer]:
+                - /url: https://qabrains.com/topics/testing-framework
+                - text: Testing Framework
+            - listitem [ref=e34]:
+              - link [ref=e35] [cursor=pointer]:
+                - /url: https://qabrains.com/topics
+                - text: See more
+                - img [ref=e37]
+        - generic [ref=e39]:
+          - heading [level=3] [ref=e40]: Quick Links
+          - list [ref=e41]:
+            - listitem [ref=e42]:
+              - link [ref=e43] [cursor=pointer]:
+                - /url: https://qabrains.com/discussion
+                - text: Discussion
+            - listitem [ref=e44]:
+              - link [ref=e45] [cursor=pointer]:
+                - /url: https://qabrains.com/about
+                - text: About Us
+            - listitem [ref=e46]:
+              - link [ref=e47] [cursor=pointer]:
+                - /url: https://qabrains.com/terms
+                - text: Terms & Conditions
+            - listitem [ref=e48]:
+              - link [ref=e49] [cursor=pointer]:
+                - /url: https://qabrains.com/policy
+                - text: Privacy Policy
+        - generic [ref=e50]:
+          - heading [level=3] [ref=e51]: Follow Us
+          - generic [ref=e52]:
+            - link [ref=e53] [cursor=pointer]:
+              - /url: https://www.linkedin.com/showcase/qabrainscom
+              - img [ref=e54]
+            - link [ref=e56] [cursor=pointer]:
+              - /url: https://www.facebook.com/qabrainscom
+              - img [ref=e57]
+            - link [ref=e60] [cursor=pointer]:
+              - /url: https://www.youtube.com/@QABrains
+              - img [ref=e61]
+          - generic [ref=e64]:
+            - heading [level=3] [ref=e65]: For Support
+            - link [ref=e66] [cursor=pointer]:
+              - /url: mailto:support@qabrains.com
+              - text: support@qabrains.com
+      - paragraph [ref=e68]: © 2026 QA Brains | All Rights Reserved
+  - region "Notifications alt+T"
+  - alert [ref=e69]
+  - dialog "Are you sure you want to log out?" [ref=e71]:
+    - generic [ref=e72]:
+      - heading "Are you sure you want to log out?" [level=2] [ref=e73]
+      - paragraph [ref=e74]: You're about to log out. Continue?
+    - generic [ref=e75]:
+      - button "Close" [ref=e76] [cursor=pointer]
+      - button "Logout" [active] [ref=e77] [cursor=pointer]
+    - button "Close" [ref=e78] [cursor=pointer]:
+      - img
+      - generic [ref=e79]: Close
+```
+
+# Test source
+
+```ts
+  1   | import { test, expect } from "@fixtures/fixtures";
+  2   | 
+  3   | test.describe("Cart Functionality Tests", () => {
+  4   |   test.afterEach(async ({ headerPage }) => {
+  5   |     await headerPage.logout();
+  6   |   });
+  7   | 
+  8   |   test("[@regression] Verify adding product to cart", async ({
+  9   |     loggedInPage,
+  10  |     homePage,
+  11  |     headerPage,
+  12  |     cartPage,
+  13  |   }) => {
+  14  |     const productName = "Sample Trouser Name";
+  15  |     const productPrice = "$72.00";
+  16  | 
+  17  |     await expect(loggedInPage).toHaveURL(/\/ecommerce$/);
+  18  | 
+  19  |     await test.step("Add product to cart", async () => {
+  20  |       await homePage.addProductToCart(productName, productPrice);
+  21  |     });
+  22  |     await test.step("Verify product is added to cart", async () => {
+  23  |       await expect(homePage.getRemoveButton(productName)).toBeVisible();
+  24  |       await expect(headerPage.getItemCountInCart()).toHaveText("1");
+  25  |     });
+  26  |     await test.step("Verify product details in cart", async () => {
+  27  |       await headerPage.clickOnCartButton();
+  28  |       await expect(cartPage.cartList.first()).toBeVisible(); // Verify cart is not empty
+  29  | 
+  30  |       const cartItem = cartPage.getProductsInCart(productName, productPrice);
+  31  |       await expect(cartItem).toHaveCount(1);
+  32  |       await expect(cartItem).toBeVisible();
+  33  |     });
+  34  |   });
+  35  |   test("[@regression] Remove product from cart", async ({
+  36  |     loggedInPage,
+  37  |     homePage,
+  38  |     headerPage,
+  39  |     cartPage,
+  40  |   }) => {
+  41  |     const productName = "Sample Trouser Name";
+  42  |     const productPrice = "$72.00";
+  43  | 
+  44  |     await expect(loggedInPage).toHaveURL(/\/ecommerce$/);
+  45  | 
+  46  |     await test.step("Add product to cart", async () => {
+  47  |       await homePage.addProductToCart(productName, productPrice);
+  48  |     });
+  49  |     await test.step("Verify product is added to cart", async () => {
+  50  |       await expect(homePage.getRemoveButton(productName)).toBeVisible();
+  51  |       await expect(headerPage.getItemCountInCart()).toHaveText("1");
+  52  |     });
+  53  |     await test.step("Verify product details in cart", async () => {
+  54  |       await headerPage.clickOnCartButton();
+  55  |       await expect(cartPage.cartList.first()).toBeVisible(); // Verify cart is not empty
+  56  | 
+  57  |       const cartItem = cartPage.getProductsInCart(productName, productPrice);
+  58  |       await expect(cartItem).toHaveCount(1);
+  59  |       await expect(cartItem).toBeVisible();
+  60  |     });
+  61  |     await test.step("Remove product from cart and verify", async () => {
+  62  |       await cartPage.removeFromCart(productName, productPrice);
+  63  |       await expect(cartPage.cartList.first()).not.toBeVisible(); // Verify cart is empty
+  64  |       await expect(cartPage.getEmptyCartMessage()).toBeVisible(); // Verify empty cart message is visible
+  65  |     });
+  66  |   });
+  67  | 
+  68  |   test("[@regression_m] Verify adding multiple products to cart and total price calculation", async ({
+  69  |     loggedInPage,
+  70  |     homePage,
+  71  |     headerPage,
+  72  |     cartPage,
+  73  |   }) => {
+  74  |     const products = [
+  75  |       { name: "Sample Shoe Name", price: "$89.00" },
+  76  |       { name: "Sample Shirt Name", price: "$49.99" },
+  77  |     ];
+  78  |     await expect(loggedInPage).toHaveURL(/\/ecommerce$/);
+  79  | 
+  80  |     await test.step("Add multiple products to cart", async () => {
+  81  |       for (const product of products) {
+  82  |         console.log(
+  83  |           `Adding product: ${product.name} with price: ${product.price}`,
+  84  |         );
+  85  | 
+  86  |         await homePage.addProductToCart(product.name, product.price);
+  87  |         await expect(homePage.getRemoveButton(product.name)).toBeVisible();
+  88  |       }
+  89  |       await expect(headerPage.getItemCountInCart()).toHaveText(
+  90  |         products.length.toString(),
+  91  |       );
+  92  |     });
+  93  |     await test.step("Verify products in cart and total price", async () => {
+  94  |       await headerPage.clickOnCartButton();
+> 95  |       await expect(cartPage.cartList).toHaveCount(products.length);
+      |                                       ^ Error: expect(locator).toHaveCount(expected) failed
+  96  |     });
+  97  |     await loggedInPage.waitForTimeout(3000);
+  98  |   });
+  99  | });
+  100 | 
+```

@@ -1,0 +1,376 @@
+# Instructions
+
+- Following Playwright test failed.
+- Explain why, be concise, respect Playwright best practices.
+- Provide a snippet of code with the fix, if possible.
+
+# Test info
+
+- Name: CartTest.spec.js >> Cart Functionality Tests >> [@regression_m] Verify adding multiple products to cart and total price calculation
+- Location: tests/CartTest.spec.js:69:7
+
+# Error details
+
+```
+Test timeout of 30000ms exceeded.
+```
+
+```
+Error: locator.click: Test timeout of 30000ms exceeded.
+Call log:
+  - waiting for locator('div.products.grid > div').filter({ hasText: 'Sample Shirt Name' }).filter({ hasText: '$48.00' }).getByRole('button', { name: 'Add to cart' })
+
+```
+
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - link [ref=e6] [cursor=pointer]:
+        - /url: /ecommerce
+        - img [ref=e7]
+        - generic [ref=e8]: (Practice Site)
+    - generic [ref=e9]:
+      - generic [ref=e10]:
+        - heading [level=3] [ref=e11]: Products
+        - generic [ref=e12]:
+          - paragraph [ref=e13]: Order by
+          - combobox [ref=e14] [cursor=pointer]:
+            - text: Select...
+            - img
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - button [ref=e17] [cursor=pointer]:
+            - button [ref=e18]:
+              - img [ref=e19]
+          - link [ref=e21] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=1
+            - img [ref=e22]
+          - link [ref=e23] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=1
+            - text: Sample Shirt Name
+          - link [ref=e24] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=1
+            - text: A sample description for the product.
+          - generic [ref=e25]:
+            - generic [ref=e26]: $49.99
+            - button [ref=e27] [cursor=pointer]: Add to cart
+        - generic [ref=e28]:
+          - button [ref=e29] [cursor=pointer]:
+            - button [ref=e30]:
+              - img [ref=e31]
+          - link [ref=e33] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=2
+            - img [ref=e34]
+          - link [ref=e35] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=2
+            - text: Sample Shoe Name
+          - link [ref=e36] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=2
+            - text: A sample description for the product.
+          - generic [ref=e37]:
+            - generic [ref=e38]: $89.00
+            - button [ref=e39] [cursor=pointer]: Add to cart
+        - generic [ref=e40]:
+          - button [ref=e41] [cursor=pointer]:
+            - button [ref=e42]:
+              - img [ref=e43]
+          - link [ref=e45] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=3
+            - img [ref=e46]
+          - link [ref=e47] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=3
+            - text: Sample Jacket Name
+          - link [ref=e48] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=3
+            - text: A sample description for the product.
+          - generic [ref=e49]:
+            - generic [ref=e50]: $129.50
+            - button [ref=e51] [cursor=pointer]: Add to cart
+        - generic [ref=e52]:
+          - button [ref=e53] [cursor=pointer]:
+            - button [ref=e54]:
+              - img [ref=e55]
+          - link [ref=e57] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=4
+            - img [ref=e58]
+          - link [ref=e59] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=4
+            - text: Sample Trouser Name
+          - link [ref=e60] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=4
+            - text: A sample description for the product.
+          - generic [ref=e61]:
+            - generic [ref=e62]: $72.00
+            - button [ref=e63] [cursor=pointer]: Add to cart
+        - generic [ref=e64]:
+          - button [ref=e65] [cursor=pointer]:
+            - button [ref=e66]:
+              - img [ref=e67]
+          - link [ref=e69] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=5
+            - img [ref=e70]
+          - link [ref=e71] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=5
+            - text: Sample T-Shirt Name
+          - link [ref=e72] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=5
+            - text: A sample description for the product.
+          - generic [ref=e73]:
+            - generic [ref=e74]: $45.00
+            - button [ref=e75] [cursor=pointer]: Add to cart
+        - generic [ref=e76]:
+          - button [ref=e77] [cursor=pointer]:
+            - button [ref=e78]:
+              - img [ref=e79]
+          - link [ref=e81] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=6
+            - img [ref=e82]
+          - link [ref=e83] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=6
+            - text: Sample Sunglass Name
+          - link [ref=e84] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=6
+            - text: A sample description for the product.
+          - generic [ref=e85]:
+            - generic [ref=e86]: $256.45
+            - button [ref=e87] [cursor=pointer]: Add to cart
+        - generic [ref=e88]:
+          - button [ref=e89] [cursor=pointer]:
+            - button [ref=e90]:
+              - img [ref=e91]
+          - link [ref=e93] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=7
+            - img [ref=e94]
+          - link [ref=e95] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=7
+            - text: Sample Jacket Name
+          - link [ref=e96] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=7
+            - text: A sample description for the product.
+          - generic [ref=e97]:
+            - generic [ref=e98]: $111.00
+            - button [ref=e99] [cursor=pointer]: Add to cart
+        - generic [ref=e100]:
+          - button [ref=e101] [cursor=pointer]:
+            - button [ref=e102]:
+              - img [ref=e103]
+          - link [ref=e105] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=8
+            - img [ref=e106]
+          - link [ref=e107] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=8
+            - text: Sample Sunglass Name
+          - link [ref=e108] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=8
+            - text: A sample description for the product.
+          - generic [ref=e109]:
+            - generic [ref=e110]: $256.45
+            - button [ref=e111] [cursor=pointer]: Add to cart
+        - generic [ref=e112]:
+          - button [ref=e113] [cursor=pointer]:
+            - button [ref=e114]:
+              - img [ref=e115]
+          - link [ref=e117] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=9
+            - img [ref=e118]
+          - link [ref=e119] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=9
+            - text: Sample T-Shirt Name
+          - link [ref=e120] [cursor=pointer]:
+            - /url: /ecommerce/product-details?id=9
+            - text: A sample description for the product.
+          - generic [ref=e121]:
+            - generic [ref=e122]: $56.45
+            - button [ref=e123] [cursor=pointer]: Add to cart
+    - contentinfo [ref=e124]:
+      - generic [ref=e126]:
+        - generic [ref=e127]:
+          - link [ref=e128] [cursor=pointer]:
+            - /url: https://qabrains.com
+            - img [ref=e129]
+          - paragraph [ref=e130]: QA Brains is the ultimate QA Community to exchange knowledge, seek advice, and engage in discussions that enhance Quality Assurance testers' skills and expertise.
+        - generic [ref=e131]:
+          - heading [level=3] [ref=e132]: QA Topics
+          - list [ref=e133]:
+            - listitem [ref=e134]:
+              - link [ref=e135] [cursor=pointer]:
+                - /url: https://qabrains.com/topics/web-testing
+                - text: Web Testing
+            - listitem [ref=e136]:
+              - link [ref=e137] [cursor=pointer]:
+                - /url: https://qabrains.com/topics/interview-questions
+                - text: Interview Questions
+            - listitem [ref=e138]:
+              - link [ref=e139] [cursor=pointer]:
+                - /url: https://qabrains.com/topics/testing-framework
+                - text: Testing Framework
+            - listitem [ref=e140]:
+              - link [ref=e141] [cursor=pointer]:
+                - /url: https://qabrains.com/topics
+                - text: See more
+                - img [ref=e143]
+        - generic [ref=e145]:
+          - heading [level=3] [ref=e146]: Quick Links
+          - list [ref=e147]:
+            - listitem [ref=e148]:
+              - link [ref=e149] [cursor=pointer]:
+                - /url: https://qabrains.com/discussion
+                - text: Discussion
+            - listitem [ref=e150]:
+              - link [ref=e151] [cursor=pointer]:
+                - /url: https://qabrains.com/about
+                - text: About Us
+            - listitem [ref=e152]:
+              - link [ref=e153] [cursor=pointer]:
+                - /url: https://qabrains.com/terms
+                - text: Terms & Conditions
+            - listitem [ref=e154]:
+              - link [ref=e155] [cursor=pointer]:
+                - /url: https://qabrains.com/policy
+                - text: Privacy Policy
+        - generic [ref=e156]:
+          - heading [level=3] [ref=e157]: Follow Us
+          - generic [ref=e158]:
+            - link [ref=e159] [cursor=pointer]:
+              - /url: https://www.linkedin.com/showcase/qabrainscom
+              - img [ref=e160]
+            - link [ref=e162] [cursor=pointer]:
+              - /url: https://www.facebook.com/qabrainscom
+              - img [ref=e163]
+            - link [ref=e166] [cursor=pointer]:
+              - /url: https://www.youtube.com/@QABrains
+              - img [ref=e167]
+          - generic [ref=e170]:
+            - heading [level=3] [ref=e171]: For Support
+            - link [ref=e172] [cursor=pointer]:
+              - /url: mailto:support@qabrains.com
+              - text: support@qabrains.com
+      - paragraph [ref=e174]: © 2026 QA Brains | All Rights Reserved
+  - region "Notifications alt+T"
+  - alert [ref=e175]
+  - dialog "Are you sure you want to log out?" [ref=e177]:
+    - generic [ref=e178]:
+      - heading "Are you sure you want to log out?" [level=2] [ref=e179]
+      - paragraph [ref=e180]: You're about to log out. Continue?
+    - generic [ref=e181]:
+      - button "Close" [ref=e182] [cursor=pointer]
+      - button "Logout" [active] [ref=e183] [cursor=pointer]
+    - button "Close" [ref=e184] [cursor=pointer]:
+      - img
+      - generic [ref=e185]: Close
+```
+
+# Test source
+
+```ts
+  1   | export class HomePage {
+  2   |   constructor(page) {
+  3   |     this.page = page;
+  4   |     this.productCard = page.locator("div.products.grid > div");
+  5   |     this.orderByDropdown = page.getByRole("combobox", { type: "button" });
+  6   |     this.orderByDropdownOption = page.getByRole("option");
+  7   |     this.productPrices = page.locator("div.products.grid div>span.text-lg");
+  8   |     this.favoriteButtons = page.locator(
+  9   |       "//span/button[contains(@class,'cursor-pointer')]",
+  10  |     );
+  11  |     this.toastMessage = page.locator("//div[text()='Added to favorites']");
+  12  |     this.removeFromButton = page.getByRole("button", {
+  13  |       name: "Remove from cart",
+  14  |     });
+  15  |     this.addToCartBtn = page.getByRole("button", { name: "Add to cart" });
+  16  |   }
+  17  |   //this.noOfProducts = page.locator("div.products.grid a:nth-of-type(1)");
+  18  | 
+  19  |   getProducts() {
+  20  |     return this.productCard;
+  21  |   }
+  22  | 
+  23  |   async selectOrderByOption(option) {
+  24  |     await this.orderByDropdown.click();
+  25  |     await this.orderByDropdownOption.filter({ hasText: option }).click();
+  26  |   }
+  27  | 
+  28  |   async getAllPrices() {
+  29  |     const pricesText = await this.productPrices.allTextContents();
+  30  |     console.log("Extracted prices:", pricesText);
+  31  |     const prices = pricesText.map((p) => Number(p.replace(/[^0-9.]/g, "")));
+  32  |     return prices;
+  33  |   }
+  34  |   async markProductAsFavorite(productName) {
+  35  |     await this.productCard
+  36  |       .filter({ hasText: productName })
+  37  |       .locator("span > button.cursor-pointer")
+  38  |       .click();
+  39  |   }
+  40  | 
+  41  |   getProductCard(index) {
+  42  |     return this.productCard.nth(index);
+  43  |   }
+  44  | 
+  45  |   async getProductNameByIndex(index) {
+  46  |     return await this.getProductCard(index)
+  47  |       .getByRole("link")
+  48  |       .nth(1)
+  49  |       .innerText();
+  50  |   }
+  51  | 
+  52  |   async clickOnProduct(productName) {
+  53  |     await this.productCard.filter({ hasText: productName }).click();
+  54  |   }
+  55  |   async addProductToCart(productName) {
+  56  |     await this.productCard
+  57  |       .filter({ hasText: productName })
+  58  |       .getByRole("button", { name: "Add to cart" })
+  59  |       .click();
+  60  |   }
+  61  |   async addProductToCart(productName, price) {
+  62  |     await this.productCard
+  63  |       .filter({ hasText: productName })
+  64  |       .filter({ hasText: price })
+  65  |       .getByRole("button", { name: "Add to cart" })
+> 66  |       .click();
+      |        ^ Error: locator.click: Test timeout of 30000ms exceeded.
+  67  |   }
+  68  | 
+  69  |   async clickOnProductByIndex(index) {
+  70  |     const count = await this.productCard.count();
+  71  |     if (index >= count) {
+  72  |       throw new Error(
+  73  |         `Index ${index} is out of range. Total products: ${count}`,
+  74  |       );
+  75  |     }
+  76  |     await this.productCard.nth(index).click();
+  77  |   }
+  78  | 
+  79  |   async isToastMessageVisible() {
+  80  |     return await this.toastMessage.isVisible();
+  81  |   }
+  82  | 
+  83  |   // async verifyButtonText(productName) {
+  84  |   //   return await this.page
+  85  |   //     .locator("div.products.grid > div")
+  86  |   //     .filter({ hasText: productName });
+  87  |   //   return await product
+  88  |   //     .getByRole("button", { name: "Remove from cart" })
+  89  |   //     .isVisible();
+  90  |   // }
+  91  | 
+  92  |   async clickOnCartButton() {
+  93  |     await page
+  94  |       .locator("#ecommerce-header")
+  95  |       .getByRole("button")
+  96  |       .filter({ hasText: /^$/ })
+  97  |       .click();
+  98  |   }
+  99  | 
+  100 |   getRemoveButton(productName) {
+  101 |     return this.productCard
+  102 |       .filter({ hasText: productName })
+  103 |       .locator("button:has-text('Remove from cart')");
+  104 |   }
+  105 | }
+  106 | 
+```

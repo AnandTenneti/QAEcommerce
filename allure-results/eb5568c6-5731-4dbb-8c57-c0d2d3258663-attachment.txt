@@ -1,0 +1,1 @@
+Logout skipped: headerPage is not defined
