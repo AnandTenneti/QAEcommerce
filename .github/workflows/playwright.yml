@@ -96,3 +96,10 @@ jobs:
           name: allure-report
           path: allure-report
           retention-days: 7
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: playwright-report
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
